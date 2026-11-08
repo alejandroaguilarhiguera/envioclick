@@ -1,0 +1,74 @@
+meta {
+  name: cancellation
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{server}}cancellation/batch/order/
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "idOrders": [
+      2225801
+    ]
+  }
+}
+
+example {
+  name: 200 success
+  
+  request: {
+    url: {{server}}cancellation/batch/order/
+    method: POST
+    mode: json
+    body:json: {
+      {
+        "idOrders": [
+          2225801
+        ]
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      date: Sun, 08 Nov 2026 01:49:41 GMT
+      server: uvicorn
+      content-length: 173
+      content-type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "status": "OK",
+          "status_codes": [
+            200
+          ],
+          "status_messages": [
+            {
+              "request": "Request processed."
+            }
+          ],
+          "data": {
+            "not_valid_orders": [],
+            "only_cancel_orders": [],
+            "to_refund_orders": [
+              2225801
+            ]
+          }
+        }
+      '''
+    }
+  }
+}

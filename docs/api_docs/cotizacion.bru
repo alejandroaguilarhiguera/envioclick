@@ -1,0 +1,249 @@
+meta {
+  name: cotizacion
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{server}}quotation/
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+      "origin_address": "Av. Revolución",
+      "origin_number": "381",
+      "origin_zip_code": "44100",
+      "origin_suburb": "Guadalajara Centro",
+      "destination_address": "Calzada Lázaro Cárdenas",
+      "destination_number": "624",
+      "destination_zip_code": "44200",
+      "destination_suburb": "El Santuario",
+      "package": {
+          "description": "Pink iPad",
+          "contentValue": 120.01,
+          "weight": 1.01,
+          "length": 30.01,
+          "height": 15.01,
+          "width": 20.01
+      }
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+  forwardAuthorizationHeader: false
+}
+
+example {
+  name: 200 success
+  
+  request: {
+    url: {{url}}/quotation
+    method: POST
+    mode: json
+    body:json: {
+      {
+          "origin_address": "Av. Revolución",
+          "origin_number": "381",
+          "origin_zip_code": "44100",
+          "origin_suburb": "Guadalajara Centro",
+          "destination_address": "Calzada Lázaro Cárdenas",
+          "destination_number": "624",
+          "destination_zip_code": "44200",
+          "destination_suburb": "El Santuario",
+          "package": {
+              "description": "Pink iPad",
+              "contentValue": 120.01,
+              "weight": 1.01,
+              "length": 30.01,
+              "height": 15.01,
+              "width": 20.01
+          }
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      date: Sat, 31 Oct 2026 18:46:25 GMT
+      content-type: application/json
+      content-length: 254
+      connection: keep-alive
+      access-control-allow-origin: *
+      server: cloudflare
+      nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+      cf-cache-status: DYNAMIC
+      report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=G%2BNp5pdnGNhXVQHuZwyc9PB48q0B3RCVI9gSHY85FagTLlupnWd8PklXvC6vOAUd3o9IqxJQ%2BUP1BDD0v4xLBY0%2FnLvuK3rXsf3fs8IDzLamjAisiYJC74x8YB3l6FPi4rDfFSmMd7cgV4oF3JCt4bnoCg%3D%3D"}]}
+      cf-ray: a534d285ba94a154-LAX
+    }
+  
+    status: {
+      code: 200
+      text: Success
+    }
+  
+    body: {
+      type: json
+      content: '''
+          {
+          "status": "OK",
+          "status_codes": [
+              200
+          ],
+          "status_messages": [
+              {
+                  "request": "Request processed."
+              }
+          ],
+          "data": {
+              "insurance": {
+                  "contentValue": 120.01,
+                  "amountInsurance": 60.09,
+                  "insurance": 0
+              },
+              "rates": [
+                  {
+                      "idRate": 8734224,
+                      "idProduct": 43,
+                      "product": "Express",
+                      "idCarrier": 10,
+                      "carrier": "99MINUTOS",
+                      "total": 78.75,
+                      "deliveryDays": 3,
+                      "deliveryType": "Domicilio",
+                      "quotationType": "EnvioClick Pro",
+                      "distance": null,
+                      "cod": false
+                  },
+                  {
+                      "idRate": 14527408,
+                      "idProduct": 61,
+                      "product": "Mismo día",
+                      "idCarrier": 38,
+                      "carrier": "M_URBANOS_EXPRESS",
+                      "total": 80.03,
+                      "deliveryDays": 0,
+                      "deliveryType": "Domicilio",
+                      "quotationType": "EnvioClick Pro",
+                      "distance": 5,
+                      "cod": false
+                  },
+                  {
+                      "idRate": 13062004,
+                      "idProduct": 35,
+                      "product": "Económico",
+                      "idCarrier": 25,
+                      "carrier": "AMPM",
+                      "total": 82.97,
+                      "deliveryDays": 4,
+                      "deliveryType": "Domicilio",
+                      "quotationType": "EnvioClick Pro",
+                      "distance": null,
+                      "cod": false
+                  },
+                  {
+                      "idRate": 14065513,
+                      "idProduct": 13,
+                      "product": "Económico",
+                      "idCarrier": 6,
+                      "carrier": "ESTAFETA",
+                      "total": 105.56,
+                      "deliveryDays": 4,
+                      "deliveryType": "Domicilio",
+                      "quotationType": "EnvioClick Pro",
+                      "distance": null,
+                      "cod": false
+                  },
+                  {
+                      "idRate": 14147061,
+                      "idProduct": 15,
+                      "product": "Económico",
+                      "idCarrier": 7,
+                      "carrier": "REDPACK",
+                      "total": 115.16,
+                      "deliveryDays": 2,
+                      "deliveryType": "Domicilio",
+                      "quotationType": "EnvioClick Pro",
+                      "distance": null,
+                      "cod": false
+                  },
+                  {
+                      "idRate": 14065511,
+                      "idProduct": 11,
+                      "product": "Dos días",
+                      "idCarrier": 6,
+                      "carrier": "ESTAFETA",
+                      "total": 135.72,
+                      "deliveryDays": 2,
+                      "deliveryType": "Domicilio",
+                      "quotationType": "EnvioClick Pro",
+                      "distance": null,
+                      "cod": false
+                  },
+                  {
+                      "idRate": 14065512,
+                      "idProduct": 12,
+                      "product": "Express",
+                      "idCarrier": 6,
+                      "carrier": "ESTAFETA",
+                      "total": 145,
+                      "deliveryDays": 1,
+                      "deliveryType": "Domicilio",
+                      "quotationType": "EnvioClick Pro",
+                      "distance": null,
+                      "cod": false
+                  },
+                  {
+                      "idRate": 8734225,
+                      "idProduct": 38,
+                      "product": "Económico",
+                      "idCarrier": 27,
+                      "carrier": "PAQUETEEXPRESS",
+                      "total": 155.44,
+                      "deliveryDays": 1,
+                      "deliveryType": "Domicilio",
+                      "quotationType": "EnvioClick Pro",
+                      "distance": null,
+                      "cod": false
+                  },
+                  {
+                      "idRate": 8734226,
+                      "idProduct": 39,
+                      "product": "Express",
+                      "idCarrier": 27,
+                      "carrier": "PAQUETEEXPRESS",
+                      "total": 357.4,
+                      "deliveryDays": 1,
+                      "deliveryType": "Domicilio",
+                      "quotationType": "EnvioClick Pro",
+                      "distance": null,
+                      "cod": false
+                  }
+              ],
+              "idCarriersNoWsResult": [
+                  9,
+                  43,
+                  8,
+                  45,
+                  22,
+                  24,
+                  26,
+                  31
+              ],
+              "package": {
+                  "weight": 2,
+                  "length": 30.01,
+                  "height": 15.01,
+                  "width": 20.01
+              },
+              "originZipCode": "44100",
+              "destinationZipCode": "44100"
+          }
+          }
+      '''
+    }
+  }
+}

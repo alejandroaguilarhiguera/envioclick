@@ -1,0 +1,87 @@
+meta {
+  name: track-batch
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{server}}track-batch/
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+      "trackingCodes": [
+          "HM1606229981666NHN",
+        "123"
+      ]
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+  forwardAuthorizationHeader: false
+}
+
+example {
+  name: 200 success
+  
+  request: {
+    url: {{server}}track-batch/
+    method: POST
+    mode: json
+    body:json: {
+      {
+          "trackingCodes": [
+              "HM1606229981666NHN",
+            "123"
+          ]
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      date: Sun, 08 Nov 2026 01:41:23 GMT
+      server: uvicorn
+      content-length: 363
+      content-type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "status": "OK",
+          "status_codes": [
+            200
+          ],
+          "status_messages": [
+            {
+              "request": "Request processed."
+            }
+          ],
+          "data": {
+            "HM1606229981666NHN": {
+              "status": "En ruta a recolección",
+              "statusDetail": "En ruta a recolección",
+              "arrivalDate": "2020-11-25 08:59:42",
+              "realPickupDate": null,
+              "realDeliveryDate": null,
+              "receivedBy": null,
+              "trackerGeneratedBy": "Carrier"
+            },
+            "123": "Tracking Code no encontrado."
+          }
+        }
+      '''
+    }
+  }
+}

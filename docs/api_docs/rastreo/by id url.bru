@@ -1,0 +1,66 @@
+meta {
+  name: by id url
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{server}}track-by-orders/2225801
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+  forwardAuthorizationHeader: false
+}
+
+example {
+  name: 200 success
+  
+  request: {
+    url: {{server}}track-by-orders/2225801
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      date: Sun, 08 Nov 2026 01:33:34 GMT
+      server: uvicorn
+      content-length: 272
+      content-type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "status": "OK",
+          "status_codes": [
+            200
+          ],
+          "status_messages": [
+            {
+              "request": "Request processed."
+            }
+          ],
+          "data": {
+            "status": "En ruta a recolección",
+            "statusDetail": "En ruta a recolección",
+            "arrivalDate": "2020-11-25 08:59:42",
+            "realPickupDate": null,
+            "realDeliveryDate": null,
+            "receivedBy": null
+          }
+        }
+      '''
+    }
+  }
+}
